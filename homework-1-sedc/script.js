@@ -65,7 +65,7 @@ let showData = (data) => {
     secondRow.insertCell(4).innerHTML = values.url;
     //create a button to display the details
     let button = secondRow.insertCell(5);
-    button.innerHTML = `<button class="detailsBtn">Details</button>`;
+    button.innerHTML = `<button class="detailsBtn"><a href="#heading">Details</a></button>`;
     tBody.appendChild(secondRow);
     button.querySelector(".detailsBtn").addEventListener("click", () => {
       avatarsTable.innerHTML = "";
@@ -89,10 +89,10 @@ let showDetails = (value, storage) => {
   <li>Air Date: ${value.air_date}</li>
   <li>Number of episode: ${value.episode}</li>
   <li>url: ${value.url}</li>
-  <button class="characters">View Characters</button>`),
+  <button class="charactersBtn">View Characters</button>`),
     console.log(value);
   //when the button is clicked get each character from the characters array and display it in a dynamic table
-  myList.querySelector(".characters").addEventListener("click", () => {
+  myList.querySelector(".charactersBtn").addEventListener("click", () => {
     for (let i = 0; i < value.characters.length; i++) {
       loadData(value.characters[i]).then((r) => {
         //here we store each character into our character array in our storage object
