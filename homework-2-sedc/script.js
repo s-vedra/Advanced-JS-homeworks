@@ -16,14 +16,6 @@ let fetchData = () => {
 //this is for the homework, a basic array with some numbers
 let someArray = [20, 5, 6, 10, 88, 69];
 
-//functions to get the numbers that are bigger than 10
-let biggerThanTen = (input) => {
-  return input > 10;
-};
-//function to multiply the numbers by themselves
-let multiply = (input) => {
-  return input * input;
-};
 //function like the .map() where it takes every number from the array and later later when its called it returns whatever the callback function tells it to do
 let thisMap = (array, callback) => {
   let newArr = [];
@@ -44,9 +36,17 @@ let thisFilter = (array, callback) => {
   return newArr;
 };
 
-//calling both of the functions
-console.log(thisMap(someArray, multiply));
-console.log(thisFilter(someArray, biggerThanTen));
+//function like ,forEach()
+let thisForEach = (array, callback) => {
+  for (let i = 0; i < array.length; i++) {
+    array[i] = callback(array[i]);
+  }
+};
+
+//calling the functions
+console.log(thisMap(someArray, (e) => e * 10));
+console.log(thisFilter(someArray, (e) => e > 50));
+thisForEach(someArray, (e) => console.log(e));
 
 //bonus
 //creating a function like the .forEach() method
