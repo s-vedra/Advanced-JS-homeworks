@@ -1,6 +1,6 @@
 //get the button from the HTML
 let buttonOne = document.getElementById("addAcademy");
-let button = document.getElementById("completeSubject");
+let buttonTwo = document.getElementById("completeSubject");
 let buttonThree = document.getElementById("addSubject");
 
 //create academy object
@@ -64,7 +64,7 @@ function Student(name, lastName, age) {
         throw new Error();
       }
     });
-    button.addEventListener("click", () => {
+    buttonTwo.addEventListener("click", () => {
       return (
         this.completedSubjects.push(this.currentSubject) +
         (this.currentSubject = input)
