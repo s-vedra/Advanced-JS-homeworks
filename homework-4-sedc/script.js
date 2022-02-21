@@ -1,5 +1,7 @@
 //get the button from the HTML
-let button = document.getElementById("complete");
+let buttonOne = document.getElementById("addAcademy");
+let button = document.getElementById("completeSubject");
+let buttonThree = document.getElementById("addSubject");
 
 //create academy object
 function Academy(name, students, subjects, start, end) {
@@ -45,24 +47,29 @@ function Student(name, lastName, age) {
   this.currentSubject = null;
   //when start academy is called push the student in the academy.student property
   this.startAcademy = function startAcademy(input) {
-    return (this.academy = input) + academy.students.push(this);
+    buttonOne.addEventListener("click", () => {
+      return (this.academy = input) + academy.students.push(this);
+    });
   };
   //when start subject is called push the input in the current subject property, push the student into the subject.student property and when a new subject is added
   //add the previus subject to the completed subject array
   this.startSubject = function startSubject(input, subject) {
-    if (this.academy && this.academy.subjects.some((sb) => sb.title == input)) {
+    buttonThree.addEventListener("click", () => {
+      if (
+        this.academy &&
+        this.academy.subjects.some((sb) => sb.title == input)
+      ) {
+        return (this.currentSubject = input + subject.students.push(this));
+      } else {
+        throw new Error();
+      }
+    });
+    button.addEventListener("click", () => {
       return (
-        (this.currentSubject = input + subject.students.push(this)) +
-        button.addEventListener("click", () => {
-          return (
-            this.completedSubjects.push(this.currentSubject) +
-            (this.currentSubject = input)
-          );
-        })
+        this.completedSubjects.push(this.currentSubject) +
+        (this.currentSubject = input)
       );
-    } else {
-      throw new Error();
-    }
+    });
   };
 }
 
