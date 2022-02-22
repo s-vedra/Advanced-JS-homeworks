@@ -7,25 +7,21 @@ let fetchData = async () => {
 
 //function to call the other functions and console the data
 let filterData = async () => {
-  let res = await fetchData();
-  return new Promise((resolve, reject) => {
-    if (res) {
-      resolve(
-        console.log(filterOut(res), printOutFullNames(res)),
-        citiesUpperCase(res),
-        console.log(maleUsers(res), averageGrade(res)),
-        addTwoToAvgGrade(res),
-        console.log(
-          res,
-          sortOutByLastName(res),
-          sortOutByAge(res),
-          maleAndFemale(res)
-        )
+  try {
+    let res = await fetchData();
+    console.log(filterOut(res), printOutFullNames(res)),
+      citiesUpperCase(res),
+      console.log(maleUsers(res), averageGrade(res)),
+      addTwoToAvgGrade(res),
+      console.log(
+        res,
+        sortOutByLastName(res),
+        sortOutByAge(res),
+        maleAndFemale(res)
       );
-    } else {
-      reject(console.log("error"));
-    }
-  });
+  } catch (e) {
+    console.log("error");
+  }
 };
 
 //filter out the users that are below 18 years old
